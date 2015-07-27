@@ -4,13 +4,12 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -21,7 +20,7 @@ import org.springframework.format.annotation.DateTimeFormat;
  *
  */
 
-@Table(name = "emprestimo")
+@Entity
 public class Emprestimo implements Serializable {
 
 	private static final long serialVersionUID = 7064809078222302493L;
@@ -33,15 +32,12 @@ public class Emprestimo implements Serializable {
 	@Column(name = "dataemprestimo")
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
-	@NotNull(message = "A data de emprestimo não pode ser nula.")
 	private Date dataEmprestimo;
 
 	@Column(name = "idpessoa")
-	@NotNull(message = "Você deve selecionar uma pessoa para o empréstimo.")
 	private Integer idPessoa;
 
 	@Column(name = "idlivro")
-	@NotNull(message = "Você deve selecionar um livro para o empréstimo.")
 	private Integer idLivro;
 
 	@Column(name = "datahoradevolucao")

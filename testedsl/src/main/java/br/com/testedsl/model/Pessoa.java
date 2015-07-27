@@ -4,10 +4,10 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
@@ -20,7 +20,7 @@ import org.springframework.format.annotation.DateTimeFormat;
  * @author Jaime
  *
  */
-@Table(name = "pessoa")
+@Entity
 public class Pessoa implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -29,8 +29,6 @@ public class Pessoa implements Serializable {
 	private Integer id;
 
 	@Column(name = "nome")
-	@Size(max = 100, message = "O nome da pessoa deve conter no máximo 100 caracteres.")
-	@NotNull(message = "O nome não pode ser nulo.")
 	private String nome;
 
 	@Column(name = "datanascimento")
@@ -39,7 +37,6 @@ public class Pessoa implements Serializable {
 	private Date dataNascimento;
 
 	@Column(name = "cpf")
-	@Size(max = 14, message = "O cpf deve conter no máximo 14 carecteres (contando com pontos e traços).")
 	private String cpf;
 
 	public Pessoa() {

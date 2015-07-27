@@ -3,6 +3,7 @@ package br.com.testedsl.model;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,7 +15,7 @@ import javax.validation.constraints.Size;
  * @author Jaime
  *
  */
-@Table(name = "livro")
+@Entity
 public class Livro implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -23,11 +24,9 @@ public class Livro implements Serializable {
 	private Integer id;
 
 	@Column(name = "nome")
-	@Size(max = 100, message = "O nome do livro deve conter no máximo 100 caracteres.")
 	private String nome;
 
 	@Column(name = "escritor")
-	@Size(max = 100, message = "O nome do escritor deve conter no máximo 100 caracteres.")
 	private String escritor;
 
 	@Column(name = "anoedicao")
