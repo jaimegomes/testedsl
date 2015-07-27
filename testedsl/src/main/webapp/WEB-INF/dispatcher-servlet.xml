@@ -16,20 +16,13 @@
 
 	<mvc:annotation-driven />
 
-	<!-- informa que a EntityManagerFactory (utilizada para se conseguir uma 
-		instância do EntityManager) será gerenciada pela LocalEntityManagerFactoryBean, 
-		uma classe do Spring -->
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean" />
 
-	<!-- informa que o gerenciamento de transações com o banco de dados será 
-		feito pela classe JPATransactionManager, uma vez que utilizaremos a JPA para 
-		o acesso -->
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
 
-	<!-- define que o controle de transações será feito através de anotações -->
 	<tx:annotation-driven />
 
 	<bean id="viewResolver"

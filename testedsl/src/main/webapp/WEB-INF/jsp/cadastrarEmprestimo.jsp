@@ -18,6 +18,9 @@
 					<springform:select id="pessoa" path="pessoa.id"
 						cssClass="form-control">
 						<option value="">selecione</option>
+						<c:forEach items="${pessoas}" var="p">
+							<option value="${p.idPessoa}">${p.nome}</option>
+						</c:forEach>
 					</springform:select>
 				</div>
 				<div class="form-group">
@@ -26,7 +29,7 @@
 						cssClass="form-control">
 						<option value="">selecione</option>
 						<c:forEach items="${livros}" var="l">
-							<option value="${l.id}">${l.nome}</option>
+							<option value="${l.idLivro}">${l.nome}</option>
 						</c:forEach>
 					</springform:select>
 				</div>
@@ -34,11 +37,6 @@
 					<label for="data">Data Empréstimo(DD/MM/AAAA):</label> <input id="dataemprestimo"
 						type="text" name="dataemprestimo" maxlength="10" class="form-control" />
 				</div>
-				<div class="form-group">
-					<label for="hora">Hora (HH:MM):</label> <input id="hora"
-						type="text" name="hora" maxlength="5" class="form-control" />
-				</div>
-			</div>
 			<input type="submit" value="Gravar" class="btn btn-primary" />
 		</springform:form>
 	</tiles:putAttribute>

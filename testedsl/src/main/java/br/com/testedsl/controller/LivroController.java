@@ -14,6 +14,11 @@ import br.com.testedsl.repository.LivroRepository;
 import br.com.testedsl.util.Mensagem;
 import br.com.testedsl.util.Mensagem.TipoMensagem;
 
+/**
+ * Classe de controle de livro
+ * @author Jaime
+ *
+ */
 @Controller
 @RequestMapping("/livro")
 public class LivroController {

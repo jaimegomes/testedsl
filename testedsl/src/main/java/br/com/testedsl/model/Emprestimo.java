@@ -5,9 +5,13 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -26,19 +30,22 @@ public class Emprestimo implements Serializable {
 	private static final long serialVersionUID = 7064809078222302493L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	@GeneratedValue(generator = "emprestimo_idemprestimo_seq", strategy = GenerationType.SEQUENCE)
+	@SequenceGenerator(name = "emprestimo_idemprestimo_seq", sequenceName = "emprestimo_idemprestimo_seq", allocationSize = 1)
+	private Integer idEmprestimo;
 
 	@Column(name = "dataemprestimo")
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date dataEmprestimo;
 
-	@Column(name = "idpessoa")
-	private Integer idPessoa;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "idPessoa")
+	private Pessoa pessoa;
 
-	@Column(name = "idlivro")
-	private Integer idLivro;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "idLivro")
+	private Livro livro;
 
 	@Column(name = "datahoradevolucao")
 	@Temporal(TemporalType.TIMESTAMP)
@@ -52,7 +59,7 @@ public class Emprestimo implements Serializable {
 	 * @return the id
 	 */
 	public Integer getId() {
-		return id;
+		return idEmprestimo;
 	}
 
 	/**
@@ -60,7 +67,7 @@ public class Emprestimo implements Serializable {
 	 *            the id to set
 	 */
 	public void setId(Integer id) {
-		this.id = id;
+		this.idEmprestimo = id;
 	}
 
 	/**
@@ -79,33 +86,31 @@ public class Emprestimo implements Serializable {
 	}
 
 	/**
-	 * @return the idPessoa
+	 * @return the pessoa
 	 */
-	public Integer getIdPessoa() {
-		return idPessoa;
+	public Pessoa getPessoa() {
+		return pessoa;
 	}
 
 	/**
-	 * @param idPessoa
-	 *            the idPessoa to set
+	 * @param pessoa the pessoa to set
 	 */
-	public void setIdPessoa(Integer idPessoa) {
-		this.idPessoa = idPessoa;
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
 	}
 
 	/**
-	 * @return the idLivro
+	 * @return the livro
 	 */
-	public Integer getIdLivro() {
-		return idLivro;
+	public Livro getLivro() {
+		return livro;
 	}
 
 	/**
-	 * @param idLivro
-	 *            the idLivro to set
+	 * @param livro the livro to set
 	 */
-	public void setIdLivro(Integer idLivro) {
-		this.idLivro = idLivro;
+	public void setLivro(Livro livro) {
+		this.livro = livro;
 	}
 
 	/**
@@ -132,7 +137,7 @@ public class Emprestimo implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((idEmprestimo == null) ? 0 : idEmprestimo.hashCode());
 		return result;
 	}
 
@@ -150,10 +155,10 @@ public class Emprestimo implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Emprestimo other = (Emprestimo) obj;
-		if (id == null) {
-			if (other.id != null)
+		if (idEmprestimo == null) {
+			if (other.idEmprestimo != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} else if (!idEmprestimo.equals(other.idEmprestimo))
 			return false;
 		return true;
 	}

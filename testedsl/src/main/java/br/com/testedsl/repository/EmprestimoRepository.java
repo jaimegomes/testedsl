@@ -33,7 +33,7 @@ public class EmprestimoRepository {
 	 */
 	public boolean PessoaHasEmprestimo(Integer idPessoa) {
 		Query query = entityManager
-				.createQuery("SELECT l FROM livro l WHERE l.pessoa.id=:idPessoa AND l.datahoradevolucao=:dataAtual");
+				.createQuery("SELECT l FROM Livro l WHERE l.pessoa.id=:idPessoa AND l.datahoradevolucao=:dataAtual");
 		query.setParameter("idPessoa", idPessoa);
 		query.setParameter("dataAtual", new Date());
 
@@ -52,7 +52,7 @@ public class EmprestimoRepository {
 	 */
 	public boolean LivroHasEmprestimo(Integer idLivro) {
 		Query query = entityManager
-				.createQuery("SELECT l FROM livro l WHERE l.id=:idLivro AND l.datahoradevolucao=:dataAtual");
+				.createQuery("SELECT l FROM Livro l WHERE l.id=:idLivro AND l.datahoradevolucao=:dataAtual");
 		query.setParameter("idLivro", idLivro);
 		query.setParameter("dataAtual", new Date());
 
@@ -92,7 +92,7 @@ public class EmprestimoRepository {
 	@SuppressWarnings("unchecked")
 	public List<Emprestimo> listar() {
 		Query query = entityManager
-				.createQuery("SELECT e FROM emprestimo e ORDER BY e.id ");
+				.createQuery("SELECT e FROM Emprestimo e ORDER BY e.idEmprestimo ");
 
 		return query.getResultList();
 	}

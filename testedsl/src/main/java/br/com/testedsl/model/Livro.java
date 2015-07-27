@@ -7,11 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.validation.constraints.Size;
+import javax.persistence.SequenceGenerator;
 
 /**
  * Model Livro
+ * 
  * @author Jaime
  *
  */
@@ -20,8 +20,9 @@ public class Livro implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	@GeneratedValue(generator = "livro_idlivro_seq", strategy = GenerationType.SEQUENCE)
+	@SequenceGenerator(name = "livro_idlivro_seq", sequenceName = "livro_idlivro_seq", allocationSize = 1)
+	private Integer idLivro;
 
 	@Column(name = "nome")
 	private String nome;
@@ -42,7 +43,7 @@ public class Livro implements Serializable {
 	 * @return the id
 	 */
 	public Integer getId() {
-		return id;
+		return idLivro;
 	}
 
 	/**
@@ -50,7 +51,7 @@ public class Livro implements Serializable {
 	 *            the id to set
 	 */
 	public void setId(Integer id) {
-		this.id = id;
+		this.idLivro = id;
 	}
 
 	/**

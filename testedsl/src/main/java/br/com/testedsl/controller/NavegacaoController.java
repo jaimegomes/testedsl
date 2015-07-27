@@ -13,6 +13,11 @@ import br.com.testedsl.repository.EmprestimoRepository;
 import br.com.testedsl.repository.LivroRepository;
 import br.com.testedsl.repository.PessoaRepository;
 
+/**
+ * Classe de controle de navegação.
+ * @author Jaime
+ *
+ */
 @Controller
 public class NavegacaoController {
 
@@ -40,14 +45,14 @@ public class NavegacaoController {
 	@RequestMapping(value = "/preparaCadastroEmprestimo.do")
 	public String redirecionaCadastroEmprestimo(Map<String, Object> map) {
 		map.put("livros", livroRepository.listar());
-		map.put("pacientes", pessoaRepository.listar());
+		map.put("pessoas", pessoaRepository.listar());
 		map.put("emprestimo", new Emprestimo());
 		return "cadastrarEmprestimo";
 	}
 
 	@RequestMapping(value = "/preparaListagemEmprestimos.do")
 	public String redirecionaListagemEmprestimo(Map<String, Object> map) {
-		map.put("pacientes", emprestimoRepository.listar());
+		map.put("emprestimos", emprestimoRepository.listar());
 		return "listarEmprestimo";
 	}
 }

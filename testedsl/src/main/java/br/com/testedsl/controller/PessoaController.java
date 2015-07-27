@@ -14,6 +14,11 @@ import br.com.testedsl.repository.PessoaRepository;
 import br.com.testedsl.util.Mensagem;
 import br.com.testedsl.util.Mensagem.TipoMensagem;
 
+/**
+ * Classe de controle de pessoa
+ * @author Jaime
+ *
+ */
 @Controller
 @RequestMapping("/pessoa")
 public class PessoaController {
@@ -24,7 +29,7 @@ public class PessoaController {
 	@Autowired
 	private EmprestimoRepository emprestimoRepository;
 
-	@RequestMapping(value = "cadastrar.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/cadastrar.do", method = RequestMethod.POST)
 	public String cadastrar(Pessoa pessoa, Model model) {
 
 		if (pessoa.getNome() == null || pessoa.getNome().equals("")) {
@@ -68,7 +73,9 @@ public class PessoaController {
 	public String listar(Model model) {
 
 		List<Pessoa> pessoas = pessoaRepository.listar();
+		
 		model.addAttribute("pessoas", pessoas);
+		
 		return "listarPessoas";
 
 	}

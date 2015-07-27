@@ -11,6 +11,11 @@ import br.com.testedsl.repository.EmprestimoRepository;
 import br.com.testedsl.util.Mensagem;
 import br.com.testedsl.util.Mensagem.TipoMensagem;
 
+/**
+ * Classe de controle de Emprestimo
+ * @author Jaime
+ *
+ */
 @Controller
 @RequestMapping("/emprestimo")
 public class EmprestimoController {

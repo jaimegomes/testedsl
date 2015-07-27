@@ -54,7 +54,7 @@ public class PessoaRepository {
 	@SuppressWarnings("unchecked")
 	public List<Pessoa> listar() {
 		Query query = entityManager
-				.createQuery("SELECT p FROM pessoa p ORDER BY p.id ");
+				.createQuery("SELECT p FROM Pessoa p ORDER BY p.idPessoa ");
 
 		return query.getResultList();
 	}

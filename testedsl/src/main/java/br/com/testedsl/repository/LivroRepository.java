@@ -54,7 +54,7 @@ public class LivroRepository {
 	@SuppressWarnings("unchecked")
 	public List<Livro> listar() {
 		Query query = entityManager
-				.createQuery("SELECT l FROM livro l ORDER BY l.id ");
+				.createQuery("SELECT l FROM Livro l ORDER BY l.idLivro ");
 
 		return query.getResultList();
 	}
