@@ -43,7 +43,7 @@ public class LivroController {
 	public String excluir(Integer idLivro, Model model) {
 
 		boolean hasLivroEmprestado = emprestimoRepository
-				.LivroHasEmprestimo(idLivro);
+				.getLivroPorId(idLivro);
 
 		if (hasLivroEmprestado) {
 			model.addAttribute("mensagem", new Mensagem(

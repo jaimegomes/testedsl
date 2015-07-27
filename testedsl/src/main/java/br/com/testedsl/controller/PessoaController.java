@@ -74,7 +74,7 @@ public class PessoaController {
 
 		List<Pessoa> pessoas = pessoaRepository.listar();
 		
-		model.addAttribute("pessoas", pessoas);
+		model.addAttribute("pessoa", pessoas);
 		
 		return "listarPessoas";
 

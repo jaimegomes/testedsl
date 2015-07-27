@@ -13,6 +13,7 @@ import br.com.testedsl.util.Mensagem.TipoMensagem;
 
 /**
  * Classe de controle de Emprestimo
+ * 
  * @author Jaime
  *
  */
@@ -25,6 +26,15 @@ public class EmprestimoController {
 
 	@RequestMapping(value = "/cadastrar.do", method = RequestMethod.POST)
 	public String cadastrar(Emprestimo emprestimo, Model model) {
+
+		boolean emprestado = emprestimoRepository.getLivroPorId(emprestimo
+				.getLivro().getId());
+
+		if (emprestado) {
+			model.addAttribute("mensagem", new Mensagem(
+					"O livro selecionado já está emprestado.",
+					TipoMensagem.ERRO));
+		}
 
 		emprestimoRepository.salvar(emprestimo);
 		model.addAttribute("emprestimo", new Emprestimo());

@@ -15,21 +15,22 @@
 					<th>ID</th>
 					<th>Nome</th>
 					<th>Data de Nascimento</th>
+					<th>CPF</th>
 					<th>Excluir</th>
 				</tr>
 
 			</thead>
 
 			<tbody>
-				<c:forEach var="p" items="${pessoas}">
+				<c:forEach items="${pessoa}" var="pessoa" >
 					<tr>
-						<td>${p.idPessoa}</td>
-						<td>${p.nome}</td>
-						<td><fmt:formatDate value="${p.dataNascimento}"
+						<td>${pessoa.idPessoa}</td>
+						<td>${pessoa.nome}</td>
+						<td><fmt:formatDate value="${pessoa.dataNascimento}"
 								pattern="dd/MM/yyyy" /></td>
-						<td>${p.cpf}</td>
+						<td>${pessoa.cpf}</td>
 						<td><a
-							href="${pageContext.request.contextPath}/pessoa/excluir.do?idPessoa=${p.idPessoa}">
+							href="${pageContext.request.contextPath}/pessoa/excluir.do?idPessoa=${pessoa.idPessoa}">
 								<input type="button" value="Excluir" class="btn btn-danger" />
 						</a></td>
 					</tr>

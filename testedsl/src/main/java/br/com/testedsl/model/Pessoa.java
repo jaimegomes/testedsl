@@ -29,15 +29,12 @@ public class Pessoa implements Serializable {
 	@SequenceGenerator(name = "pessoa_idpessoa_seq", sequenceName = "pessoa_idpessoa_seq", allocationSize = 1)
 	private Integer idPessoa;
 
-	@Column(name = "nome")
 	private String nome;
 
-	@Column(name = "datanascimento")
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private Date dataNascimento;
 
-	@Column(name = "cpf")
 	private String cpf;
 
 	public Pessoa() {

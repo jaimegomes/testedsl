@@ -44,24 +44,6 @@ public class EmprestimoRepository {
 			return false;
 	}
 
-	/**
-	 * Verifica se o livro está emprestado.
-	 * 
-	 * @param idPessoa
-	 * @return
-	 */
-	public boolean LivroHasEmprestimo(Integer idLivro) {
-		Query query = entityManager
-				.createQuery("SELECT l FROM Livro l WHERE l.id=:idLivro AND l.datahoradevolucao=:dataAtual");
-		query.setParameter("idLivro", idLivro);
-		query.setParameter("dataAtual", new Date());
-
-		if (query.getResultList().size() > 0)
-			return true;
-
-		else
-			return false;
-	}
 
 	/**
 	 * Salva o emprestimo no banco de dados.
@@ -97,4 +79,23 @@ public class EmprestimoRepository {
 		return query.getResultList();
 	}
 
+	/**
+	 * verifica se o livro já está emprestado
+	 * 
+	 * @param id
+	 */
+	@Transactional
+	public boolean getLivroPorId(Integer idLivro) {
+		Query query = entityManager
+				.createQuery("SELECT e FROM Emprestimo e WHERE e.idLivro =:idLivro AND datahoradevolucao<=:dataAtual");
+		query.setParameter("idLivro", idLivro);
+		query.setParameter("dataAtual", new Date());
+
+		if (query.getResultList().size() > 0) {
+			return true;
+		}
+
+		return false;
+	}
+	
 }
